@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <string.h>
+/*#include <string.h>*/
 
 /**
  * struct AliasData - struct for alias function

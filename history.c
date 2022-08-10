@@ -1,5 +1,4 @@
-#include "shell.h"
-#include "history.h"
+#include "main.h"
 
 /**
  * gethistory - gets the history list
