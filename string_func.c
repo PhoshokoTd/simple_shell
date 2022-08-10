@@ -1,5 +1,6 @@
-#include "shell.h"
+#include "main.h"
 #include <stdarg.h>
+
 /**
  * linecount - count lines
  *

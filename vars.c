@@ -1,5 +1,5 @@
-#include "shell.h"
-#include "shellvars.h"
+#include "main.h"
+
 /**
  * initsvars - initialize vars
  * @ac: arguemnts intiger

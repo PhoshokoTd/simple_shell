@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * getenviron - static wrapper copy whole environ
  *

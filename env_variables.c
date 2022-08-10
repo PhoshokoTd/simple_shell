@@ -1,4 +1,5 @@
-#include "shell.h"
+#include "main.h"
+
 /**
  * getallenv - get all environment variables
  * Return: environment
