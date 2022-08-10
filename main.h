@@ -11,6 +11,37 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
+#include <errno.h>
+#include <dirent.h>
+#include <signal.h>
+
+/*constants*/
+#define EXTERNAL_COMMAND 1
+#define INTERNAL_COMMAND 2
+#define PATH_COMMAND 3
+#define INVALID_COMMAND -1
+
+#define min(x, y) (((x) < (y)) ? (x) : (y))
+
+/**
+ * struct map - a struct that maps a command name to a function 
+ *
+ * @command_name: name of the command
+ * @func: the function that executes the command
+ */
+
+typedef struct map
+{
+	char *command_name;
+	void (*func)(char **command);
+} function_map;
+
+extern char **environ;
+extern char *line;
+extern char **commands;
+extern char *shell_name;
+extern int status;
 
 /* environment variables */
 extern char **environ;
@@ -27,21 +58,34 @@ int handle_builtin(char **command, char *line);
 void exit_cmd(char **command, char *line);
 void print_env(void);
 
-/*added*/
-void env(char **tokenized_command __attribute__((unused)))
-void quit(char **tokenized_command)
+/*helpers*/
+void print(char *, int);
+char **tokenizer(char *, char *);
+void remove_newline(char *);
+int _strlen(char *);
+void _strcpy(char *, char *);
 char **tokenizer(char *input_string, char *delim)
-void print(char *string, int stream)
-void remove_newline(char *str)
-void _strcpy(char *source, char *dest)
-int _strlen(char *string)
-void initializer(char **current_command, int type_command)
-char *_strtok_r(char *string, char *delim, char **save_ptr)
-int _atoi(char *s)
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
-void ctrl_c_handler(int signum)
-void non_interactive(void)
-char *find_path(void)
+
+/*helpers2*/
+int _strcmp(char *, char *);
+char *_strcat(char *, char *);
+int _strspn(char *, char *);
+int _strcspn(char *, char *);
+char *_strchr(char *, char);
+
+/*helpers3*/
+char *_strtok_r(char *, char *, char **);
+int _atoi(char *);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void ctrl_c_handler(int);
+void remove_comment(char *);
+
+/*utils*/
+int parse_command(char *);
+void execute_command(char **, int);
+char *check_path(char *);
+void (*get_func(char *))(char **);
+char *_getenv(char *);
 
 /* string handlers */
 int _strcmp(char *s1, char *s2);
@@ -73,4 +117,12 @@ struct flags
 	bool interactive;
 } flags;
 
-#endif
+/*built_in*/
+void env(char **);
+void quit(char **);
+
+/*main*/
+extern void non_interactive(void);
+extern void initializer(char **current_command, int type_command);
+
+#endif /*MAIN_H*/

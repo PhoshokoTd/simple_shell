@@ -48,7 +48,6 @@ void env(char **tokenized_command __attribute__((unused)))
  * Return: void
  */
 
- 
 void quit(char **tokenized_command)
 {
 	int num_token = 0, arg;
