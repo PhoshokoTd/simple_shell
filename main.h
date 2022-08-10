@@ -25,8 +25,23 @@ char *test_path(char **path, char *command);
 char *append_path(char *path, char *command);
 int handle_builtin(char **command, char *line);
 void exit_cmd(char **command, char *line);
-
 void print_env(void);
+
+/*added*/
+void env(char **tokenized_command __attribute__((unused)))
+void quit(char **tokenized_command)
+char **tokenizer(char *input_string, char *delim)
+void print(char *string, int stream)
+void remove_newline(char *str)
+void _strcpy(char *source, char *dest)
+int _strlen(char *string)
+void initializer(char **current_command, int type_command)
+char *_strtok_r(char *string, char *delim, char **save_ptr)
+int _atoi(char *s)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void ctrl_c_handler(int signum)
+void non_interactive(void)
+char *find_path(void)
 
 /* string handlers */
 int _strcmp(char *s1, char *s2);
